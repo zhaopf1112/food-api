@@ -2,10 +2,10 @@
 ## requirements
 - Reads in ingredients from the command line 
 - Use those ingredients to search for recipes online 
-- Using the most popular (higher popularity) recipe that contains all of the supplied ingredients, display to the user which ingredients they are missing from the recipe.
+- Using the most popular (higher popularity) recipe that contains all of the supplied ingredients, display to the user which ingredients they are missing from the recipe
 
 ## How to use 
-Our program is written through the flask framework of Python, and different routing paths are set according to the job requirements below is the details of how to use it
+Our program is written through the flask framework of Python, and different routing paths are set according to the job requirements, below is the details of how to use it.
 
 ### Deployment of the program
 if you deploy the program in linux system(our system is base on Centos7), first you need create the web service with systemd;
@@ -15,8 +15,13 @@ mkdir /opt/food-api
 ```
 #### pull repo in the server 
 ```
-git clone xxxxx
+git clone https://github.com/zhaopf1112/food-api.git
 ```
+#### pip install depended packages
+```
+pip install -r requirements.txt
+```
+
 #### create the systemd service
 ```
 cat /usr/lib/systemd/system/food-api.service
@@ -63,14 +68,13 @@ curl http://yourip:5052/recipes/apples
 also if you want to put more ingredients to get the related recipes, you can issue the command:
 ```
 curl http://yourip:5052/recipes/apples,+flour,+sugar
-and 
 ```
 
 
-
-
+and if you want to get the most popular (higher popularity) recipe that contains all of the supplied ingredients, display to the user which ingredients they are missing from the recipe.
+you can issue the command below:
 ```
-http://yourip:5052/popular_recipes/apples
+curl http://yourip:5052/popular_recipes/apples
 ```
 and the result like below:
 ```
