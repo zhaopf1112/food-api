@@ -5,22 +5,26 @@
 - Using the most popular (higher popularity) recipe that contains all of the supplied ingredients, display to the user which ingredients they are missing from the recipe
 
 ## How to use 
-Our program is written through the flask framework of Python, and different routing paths are set according to the job requirements, below is the details of how to use it.
+Our program is written through the Flask framework of Python, and different routing paths are set according to the job requirements, below is the details of how to use it.
 
 ### Deployment of the program
 if you deploy the program in linux system(our system is base on Centos7), first you need create the web service with systemd;
-#### create the work directory
+#### enter the work directory
 ```
-mkdir /opt/food-api
+cd /opt
 ```
-#### pull repo in the server 
+#### pull code into the current server(/opt)
 ```
 git clone https://github.com/zhaopf1112/food-api.git
 ```
 #### pip install depended packages
+(if you use python2.7, you can use `pip install -r requirements.txt`)
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
+
+> if your environment is different with my python environment , you need to modify the python directory in the `food-api.py`, also if you want to log the message to the customed directory, you need modify some enviable too.\
+> some releted content need to modify is `TOKEN`, and `LOG_DIR`, and python dir in the `food-api.py`.
 
 #### create the systemd service
 ```
@@ -37,7 +41,11 @@ ExecStart=/opt/food-api/food-api.py
 [Install]
 WantedBy=multi-user.target
 ```
-Now the web service has been started. and the web port is default 5052, and the host is your os system ip address(you can get the address with the command `hostname -i`,and you need to modify the `yourip` to your os ip address)
+#### start and enable the systemd service
+```
+systemctl start food-api && systemctl enable food-api
+```
+Now the web service has been started. and the web port is default `5052`, and the host is your os system ip address(you can get the address with the command `hostname -i`,and you need to modify the `yourip` to your os ip address)
 
 ### Usage
 
