@@ -1,0 +1,10 @@
+[Unit]
+Description=food api server
+After=syslog.target network.target
+
+[Service]
+WorkingDirectory=/opt/food-api
+ExecStart=/opt/food-api/food-api.py
+
+[Install]
+WantedBy=multi-user.target
