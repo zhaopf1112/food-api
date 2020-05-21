@@ -7,7 +7,7 @@
 ## How to use 
 Our program is written through the Flask framework of Python, and different routing paths are set according to the job requirements, below is the details of how to use it.
 
-### Deployment of the program
+### How to deploy
 if you deploy the program in linux system(our system is base on Centos7), first you need create the web service with systemd;
 #### enter the work directory
 ```
